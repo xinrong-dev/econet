@@ -32,8 +32,15 @@ $(document).ready(function () {
   }
 
   if ($('.controller-issues.action-show .cf_34.attribute').length > 0) {
-    const link = $('.controller-issues.action-show .cf_33.attribute .value').text()
-    $('.controller-issues.action-show .cf_33.attribute .value').html(`<a class="external" href="${link}">${link}</a>"`)
+    const link = $('.controller-issues.action-show .cf_34.attribute .value').text()
+    $('.controller-issues.action-show .cf_34.attribute .value').html(`<a class="external" href="${link}">${link}</a>"`)
+  }
+
+  if ($('.controller-projects.action-show .cf_31').length > 0) {
+    const text = $('.controller-projects.action-show .cf_31 .label').text()
+    $('.controller-projects.action-show .cf_31 .label').remove()
+    const link = $('.controller-projects.action-show .cf_31').text()
+    $('.controller-projects.action-show .cf_31').html(`<span class="label">${text}</span><a class="external" href="${link}">${link}</a>"`)
   }
 
 })
