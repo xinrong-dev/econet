@@ -9,3 +9,9 @@ end
 
 require 'hooks/view_layouts_base_html_head_hook'
 require 'hooks/view_layouts_base_body_bottom_hook'
+
+require 'patches/projects_controller_patch'
+require 'patches/issues_controller_patch'
+require 'patches/issue_patch'
+
+require 'sharepoint/sharepoint_restful_api'
