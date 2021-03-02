@@ -147,9 +147,11 @@
           :class => 'icon icon-copy', :disabled => !@can[:copy] %></li>
   <li><%= context_menu_link '案件コピー', project_copy_issue_path(@project, @issue),
           :class => 'icon icon-copy', :disabled => !@can[:copy] %></li>
-  <li><%= context_menu_link '再見積', bulk_edit_issues_path(:ids => @issue_ids, :copy => '1'),
+  <li><%= context_menu_link '再見積', project_copy_issue_path(@project, @issue),
           :class => 'icon icon-copy', :disabled => !@can[:copy] %></li>
 <% else %>
+  <li><%= context_menu_link l(:button_copy), bulk_edit_issues_path(:ids => @issue_ids, :copy => '1'),
+                          :class => 'icon icon-copy', :disabled => !@can[:copy] %></li>
 <% end %>
   <li><%= context_menu_link l(:button_delete), issues_path(:ids => @issue_ids, :back_url => @back),
                             :method => :delete, :data => {:confirm => issues_destroy_confirmation_message(@issues)}, :class => 'icon icon-del', :disabled => !@can[:delete] %></li>
