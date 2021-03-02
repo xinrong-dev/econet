@@ -29,8 +29,8 @@ module Patches
         ticket_id = '0' * pad_length + @issue.id.to_s
         folder_name = @issue.project.name + '/' + ticket_id + '.' + @issue.subject
 
-        sharepoint_create_folder(sharepoint_access_token, folder_name)
-        sharepoint_upload_file(sharepoint_access_token, ticket_id + '.' + @issue.subject, '見積書フォーマット.xlsx')
+        # sharepoint_create_folder(sharepoint_access_token, folder_name)
+        # sharepoint_upload_file(sharepoint_access_token, ticket_id + '.' + @issue.subject, '見積書フォーマット.xlsx')
 
         @issue.custom_field_values = {
           '33' => 'https://' + config['site_url'] + '/Shared Documents/□②事務/◎①見積・発注/' + folder_name ,

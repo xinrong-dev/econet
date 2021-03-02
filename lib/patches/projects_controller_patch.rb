@@ -27,7 +27,8 @@ module Patches
           params[:project][:custom_field_values]['32'] = params[:project]['name']
         end
         create_without_sharepoint
-        sharepoint_create_folder(sharepoint_access_token, params[:project]['name'])
+
+        # sharepoint_create_folder(sharepoint_access_token, params[:project]['name'])
       end
 
     end
