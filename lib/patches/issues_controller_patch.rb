@@ -21,7 +21,8 @@ module Patches
       include Sharepoint::SharepointRestfulApi
 
       def create_with_sharepoint
-        config = YAML.load_file(File.join(__dir__, '../../config/sharepoint.yml'))
+        custom_field_config = YAML.load_file(File.join(__dir__, '../../config/custom_field.yml'))
+        sharepoint_config = YAML.load_file(File.join(__dir__, '../../config/sharepoint.yml'))
         create_without_sharepoint
 
         id_length = @issue.id.to_s.length
@@ -33,9 +34,9 @@ module Patches
         sharepoint_upload_file(sharepoint_access_token, folder_name, '見積書フォーマット.xlsx')
 
         @issue.custom_field_values = {
-          '33' => 'https://' + config['site_url'] + '/Shared Documents/□②事務/◎①見積・発注/' + folder_name ,
-          '34' => 'ms-excel:ofe|u|https://' + config['site_url'] + '/Shared Documents/□②事務/◎①見積・発注/' + folder_name + '/見積書フォーマット.xlsx',
-          '35' => '0' * pad_length + @issue.id.to_s
+          custom_field_config['issue_custom_field_2_id'] => 'https://' + sharepoint_config['site_url'] + '/Shared Documents/□②事務/◎①見積・発注/' + folder_name ,
+          custom_field_config['issue_custom_field_3_id'] => 'ms-excel:ofe|u|https://' + sharepoint_config['site_url'] + '/Shared Documents/□②事務/◎①見積・発注/' + folder_name + '/見積書フォーマット.xlsx',
+          custom_field_config['issue_custom_field_4_id'] => '0' * pad_length + @issue.id.to_s
         }
 
         @issue.save

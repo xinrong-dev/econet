@@ -1,0 +1,6 @@
+project_custom_field_1_id: '2' # SharePointディレクトリ:
+project_custom_field_2_id: '3' # 見積フォルダ:
+issue_custom_field_1_id: '1' # お客様名
+issue_custom_field_2_id: '32' # 見積フォルダのリンク
+issue_custom_field_3_id: '33' # 見積書のリンク
+issue_custom_field_4_id: '34' # 見積No.

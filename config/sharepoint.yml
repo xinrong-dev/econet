@@ -1,5 +1,5 @@
-site_url: jpeconet.sharepoint.com
-client_id: 4dbe5acf-ff7d-4525-b4ec-7427a0c0ddfa
-client_secret: jcKjKeT8QELMpg5C1s3X6PD81azPx4HdwLH9ASA/P7M=
-tenant_id: 95bf1076-849e-4294-89a3-d877cc1c49a1
-resource_id: 00000003-0000-0ff1-ce00-000000000000
+site_url: 'jpeconet.sharepoint.com'
+client_id: '4dbe5acf-ff7d-4525-b4ec-7427a0c0ddfa'
+client_secret: 'jcKjKeT8QELMpg5C1s3X6PD81azPx4HdwLH9ASA/P7M='
+tenant_id: '95bf1076-849e-4294-89a3-d877cc1c49a1'
+resource_id: '00000003-0000-0ff1-ce00-000000000000'
