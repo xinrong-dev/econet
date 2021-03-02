@@ -143,11 +143,9 @@
   <li><%= context_menu_link l(:button_log_time), new_issue_time_entry_path(@issue),
           :class => 'icon icon-time-add' %></li>
   <% end %>
-  <li><%= context_menu_link l(:button_copy), project_copy_issue_path(@project, @issue),
+  <li><%= context_menu_link '案件コピー', project_copy_issue_path(@project, @issue, role: 'basic'),
           :class => 'icon icon-copy', :disabled => !@can[:copy] %></li>
-  <li><%= context_menu_link '案件コピー', project_copy_issue_path(@project, @issue),
-          :class => 'icon icon-copy', :disabled => !@can[:copy] %></li>
-  <li><%= context_menu_link '再見積', project_copy_issue_path(@project, @issue),
+  <li><%= context_menu_link '再見積', project_copy_issue_path(@project, @issue, role: 'estimate'),
           :class => 'icon icon-copy', :disabled => !@can[:copy] %></li>
 <% else %>
   <li><%= context_menu_link l(:button_copy), bulk_edit_issues_path(:ids => @issue_ids, :copy => '1'),
