@@ -1,1 +1,2 @@
-*.example.yml
+config/custom_field.yml
+config/sharepoint.yml
