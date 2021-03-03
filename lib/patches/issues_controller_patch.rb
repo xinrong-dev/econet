@@ -29,7 +29,7 @@ module Patches
         pad_length = 8 - id_length
         ticket_id = '0' * pad_length + @issue.id.to_s
 
-        folder_name = @issue.project.name + '/' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_5_id']]
+        folder_name = '01.見積/' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_5_id']]
        
         sharepoint_create_folder(sharepoint_access_token, folder_name)
 

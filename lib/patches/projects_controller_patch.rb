@@ -25,11 +25,11 @@ module Patches
           params[:project][:custom_field_values][custom_field_config['project_custom_field_1_id']] = 'file:///' + sharepoint_config['site_url'] + '@SSL/DavWWWRoot/Shared Documents/□②事務/◎①見積・発注/' + params[:project]['name']
         end
         if params[:project][:custom_field_values][custom_field_config['project_custom_field_2_id']] == ''
-          params[:project][:custom_field_values][custom_field_config['project_custom_field_2_id']] = params[:project]['name']
+          params[:project][:custom_field_values][custom_field_config['project_custom_field_2_id']] = '01.見積'
         end
         create_without_sharepoint
 
-        sharepoint_create_folder(sharepoint_access_token, params[:project]['name'])
+        sharepoint_create_folder(sharepoint_access_token, '01.見積')
       end
 
     end
