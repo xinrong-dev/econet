@@ -1,6 +1,10 @@
-project_custom_field_1_id: # SharePointディレクトリ:
-project_custom_field_2_id: # 見積フォルダ:
-issue_custom_field_1_id: # お客様名
-issue_custom_field_2_id: # 見積フォルダのリンク
-issue_custom_field_3_id: # 見積書のリンク
-issue_custom_field_4_id: # 見積No.
+project_custom_field_1_id: '' # SharePointディレクトリ:
+project_custom_field_2_id: '' # 見積フォルダ:
+issue_custom_field_1_id: '' # お客様名
+issue_custom_field_2_id: '' # 見積フォルダのリンク
+issue_custom_field_3_id: '' # 見積書のリンク
+issue_custom_field_4_id: '' # 見積No.
+issue_custom_field_5_id: '' # 卸先
+issue_custom_field_6_id: '' # 販売店
+issue_custom_field_7_id: '' # 工務店
+issue_custom_field_8_id: '' # 提案概要

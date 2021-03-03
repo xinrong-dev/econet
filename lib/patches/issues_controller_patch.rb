@@ -28,14 +28,31 @@ module Patches
         id_length = @issue.id.to_s.length
         pad_length = 8 - id_length
         ticket_id = '0' * pad_length + @issue.id.to_s
-        folder_name = @issue.project.name + '/' + ticket_id + '.' + @issue.subject
 
+        folder_name = @issue.project.name + '/' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_5_id']]
+       
         sharepoint_create_folder(sharepoint_access_token, folder_name)
-        sharepoint_upload_file(sharepoint_access_token, folder_name, '見積書フォーマット.xlsx')
+
+        if params[:issue][:custom_field_values][custom_field_config['issue_custom_field_6_id']] != ''
+          folder_name = folder_name + '/' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_6_id']]
+          sharepoint_create_folder(sharepoint_access_token, folder_name)
+        end
+        if params[:issue][:custom_field_values][custom_field_config['issue_custom_field_7_id']] != ''
+          folder_name = folder_name + '/' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_7_id']]
+          sharepoint_create_folder(sharepoint_access_token, folder_name)
+        end
+
+        folder_name = folder_name + '/' + ticket_id + '【' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_8_id']] + '】' +
+          params[:issue][:custom_field_values][custom_field_config['issue_custom_field_1_id']]
+        file_name = '【' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_8_id']] + '】' +
+          params[:issue][:custom_field_values][custom_field_config['issue_custom_field_1_id']] + '　計算表.xlsx'
+        
+        sharepoint_create_folder(sharepoint_access_token, folder_name)
+        sharepoint_upload_file(sharepoint_access_token, folder_name, file_name)
 
         @issue.custom_field_values = {
           custom_field_config['issue_custom_field_2_id'] => 'https://' + sharepoint_config['site_url'] + '/Shared Documents/□②事務/◎①見積・発注/' + folder_name ,
-          custom_field_config['issue_custom_field_3_id'] => 'ms-excel:ofe|u|https://' + sharepoint_config['site_url'] + '/Shared Documents/□②事務/◎①見積・発注/' + folder_name + '/見積書フォーマット.xlsx',
+          custom_field_config['issue_custom_field_3_id'] => 'ms-excel:ofe|u|https://' + sharepoint_config['site_url'] + '/Shared Documents/□②事務/◎①見積・発注/' + folder_name + '/' + file_name,
           custom_field_config['issue_custom_field_4_id'] => '0' * pad_length + @issue.id.to_s
         }
 
