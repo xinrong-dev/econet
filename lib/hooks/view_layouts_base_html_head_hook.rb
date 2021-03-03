@@ -6,7 +6,8 @@ module Hooks
       tags << javascript_tag(
         'var projectSharepointFieldID = "' + custom_field_config['project_custom_field_1_id'] +
         '"; var issueCustomerFieldID = "' + custom_field_config['issue_custom_field_1_id'] +
-        '"; var issueSharepointFieldID = "' + custom_field_config['issue_custom_field_3_id'] + '";'
+        '"; var issueSharepointFolderFieldID = "' + custom_field_config['issue_custom_field_2_id'] +
+        '"; var issueSharepointFileFieldID = "' + custom_field_config['issue_custom_field_3_id'] + '"'
       )
       return tags.join(' ')
     end

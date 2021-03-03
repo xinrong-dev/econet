@@ -33,10 +33,17 @@ $(document).ready(function () {
     }
   }
 
-  if (issueSharepointFieldID) {
-    if ($('.controller-issues.action-show .cf_' + issueSharepointFieldID + '.attribute').length > 0) {
-      var link = $('.controller-issues.action-show .cf_' + issueSharepointFieldID + '.attribute .value').text()
-      $('.controller-issues.action-show .cf_' + issueSharepointFieldID + '.attribute .value').html(`<a class="external" href="${link}">${link}</a>"`)
+  if (issueSharepointFolderFieldID) {
+    if ($('.controller-issues.action-show .cf_' + issueSharepointFolderFieldID + '.attribute').length > 0) {
+      var link = $('.controller-issues.action-show .cf_' + issueSharepointFolderFieldID + '.attribute .value').text()
+      $('.controller-issues.action-show .cf_' + issueSharepointFolderFieldID + '.attribute .value').html(`<a class="external" href="${link}">${link}</a>"`)
+    }
+  }
+
+  if (issueSharepointFileFieldID) {
+    if ($('.controller-issues.action-show .cf_' + issueSharepointFileFieldID + '.attribute').length > 0) {
+      var link = $('.controller-issues.action-show .cf_' + issueSharepointFileFieldID + '.attribute .value').text()
+      $('.controller-issues.action-show .cf_' + issueSharepointFileFieldID + '.attribute .value').html(`<a class="external" href="${link}">${link}</a>"`)
     }
   }
 
