@@ -51,7 +51,7 @@ module Patches
         sharepoint_upload_file(sharepoint_access_token, folder_name, file_name)
 
         @issue.custom_field_values = {
-          custom_field_config['issue_custom_field_2_id'] => 'file:///' + sharepoint_config['site_url'] + '@SSL/DavWWWRoot/Shared Documents/□②事務/◎①見積・発注/' + folder_name ,
+          custom_field_config['issue_custom_field_2_id'] => 'file:///\\\\' + sharepoint_config['site_url'] + '@SSL/DavWWWRoot/Shared Documents/□②事務/◎①見積・発注/' + folder_name ,
           custom_field_config['issue_custom_field_3_id'] => 'ms-excel:ofe|u|https://' + sharepoint_config['site_url'] + '/Shared Documents/□②事務/◎①見積・発注/' + folder_name + '/' + file_name,
           custom_field_config['issue_custom_field_4_id'] => '0' * pad_length + @issue.id.to_s
         }
