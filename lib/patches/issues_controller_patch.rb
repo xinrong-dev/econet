@@ -29,34 +29,36 @@ module Patches
         pad_length = 8 - id_length
         ticket_id = '0' * pad_length + @issue.id.to_s
 
-        folder_name = '01.見積/' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_5_id']]
+        if ticket_id != '00000000'
+          folder_name = '01.見積/' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_5_id']]
        
-        sharepoint_create_folder(sharepoint_access_token, folder_name)
-
-        if params[:issue][:custom_field_values][custom_field_config['issue_custom_field_6_id']] != ''
-          folder_name = folder_name + '/' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_6_id']]
           sharepoint_create_folder(sharepoint_access_token, folder_name)
-        end
-        if params[:issue][:custom_field_values][custom_field_config['issue_custom_field_7_id']] != ''
-          folder_name = folder_name + '/' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_7_id']]
+  
+          if params[:issue][:custom_field_values][custom_field_config['issue_custom_field_6_id']] != ''
+            folder_name = folder_name + '/' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_6_id']]
+            sharepoint_create_folder(sharepoint_access_token, folder_name)
+          end
+          if params[:issue][:custom_field_values][custom_field_config['issue_custom_field_7_id']] != ''
+            folder_name = folder_name + '/' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_7_id']]
+            sharepoint_create_folder(sharepoint_access_token, folder_name)
+          end
+  
+          folder_name = folder_name + '/' + ticket_id + '【' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_8_id']] + '】' +
+            params[:issue][:custom_field_values][custom_field_config['issue_custom_field_1_id']]
+          file_name = '【' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_8_id']] + '】' +
+            params[:issue][:custom_field_values][custom_field_config['issue_custom_field_1_id']] + '　計算表.xlsx'
+          
           sharepoint_create_folder(sharepoint_access_token, folder_name)
+          sharepoint_upload_file(sharepoint_access_token, folder_name, file_name)
+  
+          @issue.custom_field_values = {
+            custom_field_config['issue_custom_field_2_id'] => 'file:///\\\\' + sharepoint_config['site_url'] + '@SSL/DavWWWRoot/Shared Documents/□②事務/◎①見積・発注/' + folder_name ,
+            custom_field_config['issue_custom_field_3_id'] => 'ms-excel:ofe|u|https://' + sharepoint_config['site_url'] + '/Shared Documents/□②事務/◎①見積・発注/' + folder_name + '/' + file_name,
+            custom_field_config['issue_custom_field_4_id'] => '0' * pad_length + @issue.id.to_s
+          }
+  
+          @issue.save
         end
-
-        folder_name = folder_name + '/' + ticket_id + '【' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_8_id']] + '】' +
-          params[:issue][:custom_field_values][custom_field_config['issue_custom_field_1_id']]
-        file_name = '【' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_8_id']] + '】' +
-          params[:issue][:custom_field_values][custom_field_config['issue_custom_field_1_id']] + '　計算表.xlsx'
-        
-        sharepoint_create_folder(sharepoint_access_token, folder_name)
-        sharepoint_upload_file(sharepoint_access_token, folder_name, file_name)
-
-        @issue.custom_field_values = {
-          custom_field_config['issue_custom_field_2_id'] => 'file:///\\\\' + sharepoint_config['site_url'] + '@SSL/DavWWWRoot/Shared Documents/□②事務/◎①見積・発注/' + folder_name ,
-          custom_field_config['issue_custom_field_3_id'] => 'ms-excel:ofe|u|https://' + sharepoint_config['site_url'] + '/Shared Documents/□②事務/◎①見積・発注/' + folder_name + '/' + file_name,
-          custom_field_config['issue_custom_field_4_id'] => '0' * pad_length + @issue.id.to_s
-        }
-
-        @issue.save
       end
 
       def build_new_issue_from_params_with_extend
@@ -69,13 +71,16 @@ module Patches
               raise ::Unauthorized
             end
             if params[:role] == 'estimate'
-              @link_copy = link_copy?(params[:link_copy]) || request.get?
-              @copy_attachments = params[:copy_attachments].present? || request.get?
-              @copy_subtasks = params[:copy_subtasks].present? || request.get?
-              @copy_watchers = User.current.allowed_to?(:add_issue_watchers, @project)
-              @issue.copy_from(@copy_from, :attachments => @copy_attachments, :subtasks => @copy_subtasks, :watchers => @copy_watchers, :link => @link_copy)
-              @issue.parent_issue_id = @copy_from.parent_id
+              @link_copy = true
             end
+            if params[:role] == 'basic'
+              @link_copy = false
+            end
+            @copy_attachments = params[:copy_attachments].present? || request.get?
+            @copy_subtasks = params[:copy_subtasks].present? || request.get?
+            @copy_watchers = User.current.allowed_to?(:add_issue_watchers, @project)
+            @issue.copy_from(@copy_from, :attachments => @copy_attachments, :subtasks => @copy_subtasks, :watchers => @copy_watchers, :link => @link_copy)
+            @issue.parent_issue_id = @copy_from.parent_id
           rescue ActiveRecord::RecordNotFound
             render_404
             return
