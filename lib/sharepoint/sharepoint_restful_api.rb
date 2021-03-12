@@ -45,6 +45,7 @@ module Sharepoint
       https = Net::HTTP.new(url.host, url.port)
       https.use_ssl = true
 
+      request = Net::HTTP::Get.new(url)
       request['Accept'] = 'application/json;odata=verbose'
       request['Content-Type'] = 'application/json;odata=verbose'
       request['Authorization'] = 'Bearer ' + access_token
