@@ -38,19 +38,19 @@ $(document).ready(function () {
       var link = $('.controller-issues.action-show .cf_' + issueSharepointFolderFieldID + '.attribute .value').text()
       var list = link.split('/')
       var folderName = list[list.length - 1]
-      $('.controller-issues.action-show .cf_' + issueSharepointFolderFieldID + '.attribute .value').html(`<a class="external" href="${link}">${folderName}</a>"`)
+      $('.controller-issues.action-show .cf_' + issueSharepointFolderFieldID + '.attribute .value').html(`<a class="external" href="${link}">${folderName}</a>`)
     }
-    if ($('.controller-issues.action-index .cf_' + issueSharepointFolderFieldID + '.string').length > 0) {
-      var link = $('.controller-issues.action-index .cf_' + issueSharepointFolderFieldID + '.string').text()
+    if ($('.controller-issues.action-index td.cf_' + issueSharepointFolderFieldID + '.string').length > 0) {
+      var link = $('.controller-issues.action-index td.cf_' + issueSharepointFolderFieldID + '.string').text()
       var list = link.split('/')
       var folderName = list[list.length - 1]
-      $('.controller-issues.action-index .cf_' + issueSharepointFolderFieldID + '.string').html(`<a class="external" href="${link}">${folderName}</a>"`)
+      $('.controller-issues.action-index td.cf_' + issueSharepointFolderFieldID + '.string').html(`<a class="external" href="${link}">${folderName}</a>`)
     }
-    if ($('.controller-my.action-page .cf_' + issueSharepointFolderFieldID + '.string').length > 0) {
-      var link = $('.controller-my.action-page .cf_' + issueSharepointFolderFieldID + '.string').text()
+    if ($('.controller-my.action-page td.cf_' + issueSharepointFolderFieldID + '.string').length > 0) {
+      var link = $('.controller-my.action-page td.cf_' + issueSharepointFolderFieldID + '.string').text()
       var list = link.split('/')
       var folderName = list[list.length - 1]
-      $('.controller-my.action-page .cf_' + issueSharepointFolderFieldID + '.string').html(`<a class="external" href="${link}">${folderName}</a>"`)
+      $('.controller-my.action-page td.cf_' + issueSharepointFolderFieldID + '.string').html(`<a class="external" href="${link}">${folderName}</a>`)
     }
   }
 
@@ -59,19 +59,19 @@ $(document).ready(function () {
       var link = $('.controller-issues.action-show .cf_' + issueSharepointFileFieldID + '.attribute .value').text()
       var list = link.split('/')
       var fileName = list[list.length - 1]
-      $('.controller-issues.action-show .cf_' + issueSharepointFileFieldID + '.attribute .value').html(`<a class="external" href="${link}">${fileName}</a>"`)
+      $('.controller-issues.action-show .cf_' + issueSharepointFileFieldID + '.attribute .value').html(`<a class="external" href="${link}">${fileName}</a>`)
     }
-    if ($('.controller-issues.action-index .cf_' + issueSharepointFileFieldID + '.string').length > 0) {
-      var link = $('.controller-issues.action-index .cf_' + issueSharepointFileFieldID + '.string').text()
+    if ($('.controller-issues.action-index td.cf_' + issueSharepointFileFieldID + '.string').length > 0) {
+      var link = $('.controller-issues.action-index td.cf_' + issueSharepointFileFieldID + '.string').text()
       var list = link.split('/')
       var fileName = list[list.length - 1]
-      $('.controller-issues.action-index .cf_' + issueSharepointFileFieldID + '.string').html(`<a class="external" href="${link}">${fileName}</a>"`)
+      $('.controller-issues.action-index td.cf_' + issueSharepointFileFieldID + '.string').html(`<a class="external" href="${link}">${fileName}</a>`)
     }
-    if ($('.controller-my.action-page .cf_' + issueSharepointFileFieldID + '.string').length > 0) {
-      var link = $('.controller-my.action-page .cf_' + issueSharepointFileFieldID + '.string').text()
+    if ($('.controller-my.action-page td.cf_' + issueSharepointFileFieldID + '.string').length > 0) {
+      var link = $('.controller-my.action-page td.cf_' + issueSharepointFileFieldID + '.string').text()
       var list = link.split('/')
       var fileName = list[list.length - 1]
-      $('.controller-my.action-page .cf_' + issueSharepointFileFieldID + '.string').html(`<a class="external" href="${link}">${fileName}</a>"`)
+      $('.controller-my.action-page td.cf_' + issueSharepointFileFieldID + '.string').html(`<a class="external" href="${link}">${fileName}</a>`)
     }
   }
 
@@ -80,7 +80,7 @@ $(document).ready(function () {
       var text = $('.controller-projects.action-show .cf_' + projectSharepointFieldID + ' .label').text()
       $('.controller-projects.action-show .cf_' + projectSharepointFieldID + ' .label').remove()
       var link = $('.controller-projects.action-show .cf_' + projectSharepointFieldID).text()
-      $('.controller-projects.action-show .cf_' + projectSharepointFieldID).html(`<span class="label">${text}</span><a class="external" href="${link}">${link}</a>"`)
+      $('.controller-projects.action-show .cf_' + projectSharepointFieldID).html(`<span class="label">${text}</span><a class="external" href="${link}">${link}</a>`)
     }
   }
 
