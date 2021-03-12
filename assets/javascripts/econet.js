@@ -1,6 +1,20 @@
 $(document).ready(function () {
 
-  if ($('.controller-issues.action-new #issue_due_date').length) {
+  if ($('.controller-issues.action-new #issue_start_date').length && $('.controller-issues.action-new #issue_due_date').length) {
+
+    var now = new Date();
+    var month = (now.getMonth() + 1).toString()
+    var day = now.getDate().toString()
+    var year = now.getFullYear()
+
+    if (month.length < 2) {
+      month = '0' + month
+    }
+    if (day.length < 2) {
+      day = '0' + day
+    }
+
+    $('.controller-issues.action-new #issue_start_date').val([year, month, day].join('-'))
 
     var afterThreeDaysFromNow = new Date().getTime() + 3 * 24 * 60 * 60 * 1000
     var dueDate = afterThreeDaysFromNow

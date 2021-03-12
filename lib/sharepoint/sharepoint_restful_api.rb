@@ -57,6 +57,7 @@ module Sharepoint
       request = Net::HTTP::Post.new(url)
       request['Accept'] = 'application/json;odata=verbose'
       request['Content-Type'] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+      request['Authorization'] = 'Bearer ' + access_token
       
       request.body = file_content
 
