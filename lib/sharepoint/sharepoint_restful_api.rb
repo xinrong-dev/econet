@@ -36,20 +36,28 @@ module Sharepoint
       https.request(request)
     end
 
+
     def sharepoint_upload_file(access_token, folder_name, file_name)
       config = YAML.load_file(File.join(__dir__, '../../config/sharepoint.yml'))
-      url = URI.parse(URI.escape('https://' + config['site_url'] + "/_api/web/GetFolderByServerRelativeUrl('/Shared Documents/□②事務/◎①見積・発注/" + folder_name + "')/Files/Add(url='" + file_name + "', overwrite=true)"))
+
+      url = URI.parse(URI.escape("/_api/web/GetFolderByServerRelativeUrl('/Shared Documents/□②事務/◎①見積・発注/01.見積/00.マスター最新')/Files('【システム用】　計算表.xlsx')/$value"))
 
       https = Net::HTTP.new(url.host, url.port)
       https.use_ssl = true
 
-      request = Net::HTTP::Post.new(url)
       request['Accept'] = 'application/json;odata=verbose'
+      request['Content-Type'] = 'application/json;odata=verbose'
       request['Authorization'] = 'Bearer ' + access_token
+
+      response = https.request(request)
+      file_content = response.read_body
+
+      url = URI.parse(URI.escape('https://' + config['site_url'] + "/_api/web/GetFolderByServerRelativeUrl('/Shared Documents/□②事務/◎①見積・発注/" + folder_name + "')/Files/Add(url='" + file_name + "', overwrite=true)"))
+
+      request = Net::HTTP::Post.new(url)
       request['Content-Type'] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
       
-      file = File.open(File.join(__dir__, '../../assets/sharepoint/sheet.xlsx'), 'rb')
-      request.body = file.read
+      request.body = file_content
 
       https.request(request)
     end
