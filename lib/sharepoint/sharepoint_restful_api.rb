@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Sharepoint
 
   module SharepointRestfulApi
@@ -10,7 +12,7 @@ module Sharepoint
       https.use_ssl = true
 
       request = Net::HTTP::Post.new(url)
-      request['Content-Type'] = 'application/x-www-form-urlencoded'      
+      request['Content-Type'] = 'application/x-www-form-urlencoded'
       request.body = 'grant_type=client_credentials' +
         '&client_id=' + config['client_id'] + '@' + config['tenant_id'] +
         '&client_secret=' + config['client_secret'] +
@@ -36,7 +38,6 @@ module Sharepoint
       https.request(request)
     end
 
-
     def sharepoint_upload_file(access_token, folder_name, file_name)
       config = YAML.load_file(File.join(__dir__, '../../config/sharepoint.yml'))
 
@@ -58,7 +59,7 @@ module Sharepoint
       request['Accept'] = 'application/json;odata=verbose'
       request['Content-Type'] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
       request['Authorization'] = 'Bearer ' + access_token
-      
+
       request.body = file_content
 
       https.request(request)

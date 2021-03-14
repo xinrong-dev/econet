@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_dependency 'issue'
 
 module Patches
@@ -9,11 +11,10 @@ module Patches
         unloadable
         validates_presence_of :start_date, :due_date
       end
-
     end
 
   end
 
 end
 
-Issue.send(:include, Patches::IssuePatch)
+Issue.include Patches::IssuePatch

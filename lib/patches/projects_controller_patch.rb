@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_dependency 'projects_controller'
 
 module Patches
@@ -38,4 +40,4 @@ module Patches
 
 end
 
-ProjectsController.send(:include, Patches::ProjectsControllerPatch)
+ProjectsController.include Patches::ProjectsControllerPatch

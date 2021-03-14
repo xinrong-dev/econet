@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Hooks
 
   class ViewLayoutsBaseBodyBottomHook < Redmine::Hook::ViewListener

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Redmine::Plugin.register :econet do
   name 'Econet plugin'
   author 'Author name'

@@ -8,3 +8,5 @@ issue_custom_field_5_id: '' # 卸先
 issue_custom_field_6_id: '' # 販売店
 issue_custom_field_7_id: '' # 工務店
 issue_custom_field_8_id: '' # 提案概要
+tracker_custom_field_1_id:  # 新規見積
+tracker_custom_field_2_id:  # 再見積
