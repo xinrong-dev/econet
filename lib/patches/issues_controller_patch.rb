@@ -69,9 +69,15 @@ module Patches
         if params[:copy_from]
           if params[:role] == 'estimate'
             @issue.tracker_id = custom_field_config['tracker_custom_field_2_id']
+            @issue.custom_field_values = {
+              custom_field_config['issue_custom_field_4_id'] => ''
+            }
           end
           if params[:role] == 'basic'
             @issue.tracker_id = custom_field_config['tracker_custom_field_1_id']
+            @issue.custom_field_values = {
+              custom_field_config['issue_custom_field_4_id'] => ''
+            }
           end
         end
       end
