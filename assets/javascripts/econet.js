@@ -16,7 +16,7 @@ $(document).ready(function () {
 
     $('.controller-issues.action-new #issue_start_date').val([year, month, day].join('-'))
 
-    var afterThreeDaysFromNow = new Date().getTime() + 3 * 24 * 60 * 60 * 1000
+    var afterThreeDaysFromNow = new Date().getTime() + 2 * 24 * 60 * 60 * 1000
     var dueDate = afterThreeDaysFromNow
     if (new Date(afterThreeDaysFromNow).getDay() === 6) {
       dueDate = afterThreeDaysFromNow + 2 * 24 * 60 * 60 * 1000
