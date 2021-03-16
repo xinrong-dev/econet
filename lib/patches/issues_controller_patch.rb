@@ -32,20 +32,20 @@ module Patches
         ticket_id = '0' * pad_length + @issue.id.to_s
 
         if ticket_id != '00000000'
-          folder_name = '01.見積/' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_5_id']]
+          folder_name = '01.見積\\' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_5_id']]
 
           sharepoint_create_folder(sharepoint_access_token, folder_name)
 
           if params[:issue][:custom_field_values][custom_field_config['issue_custom_field_6_id']] != ''
-            folder_name = folder_name + '/' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_6_id']]
+            folder_name = folder_name + '\\' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_6_id']]
             sharepoint_create_folder(sharepoint_access_token, folder_name)
           end
           if params[:issue][:custom_field_values][custom_field_config['issue_custom_field_7_id']] != ''
-            folder_name = folder_name + '/' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_7_id']]
+            folder_name = folder_name + '\\' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_7_id']]
             sharepoint_create_folder(sharepoint_access_token, folder_name)
           end
 
-          folder_name = folder_name + '/' + ticket_id + '【' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_8_id']] + '】' +
+          folder_name = folder_name + '\\' + ticket_id + '【' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_8_id']] + '】' +
             params[:issue][:custom_field_values][custom_field_config['issue_custom_field_1_id']]
           file_name = '【' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_8_id']] + '】' +
             params[:issue][:custom_field_values][custom_field_config['issue_custom_field_1_id']] + '　計算表.xlsx'
