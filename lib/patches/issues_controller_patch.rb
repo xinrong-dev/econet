@@ -50,7 +50,7 @@ module Patches
 
           folder_name = folder_name + '/' + ticket_id + '【' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_8_id']] + '】' +
             params[:issue][:custom_field_values][custom_field_config['issue_custom_field_1_id']]
-          folder_name2 = folder_name 2+ '\\' + ticket_id + '【' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_8_id']] + '】' +
+          folder_name2 = folder_name2+ '\\' + ticket_id + '【' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_8_id']] + '】' +
             params[:issue][:custom_field_values][custom_field_config['issue_custom_field_1_id']]
           file_name = '【' + params[:issue][:custom_field_values][custom_field_config['issue_custom_field_8_id']] + '】' +
             params[:issue][:custom_field_values][custom_field_config['issue_custom_field_1_id']] + '　計算表.xlsx'
