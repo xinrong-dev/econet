@@ -51,18 +51,21 @@ $(document).ready(function () {
     if ($('.controller-issues.action-show .cf_' + issueSharepointFolderFieldID + '.attribute').length > 0) {
       var link = $('.controller-issues.action-show .cf_' + issueSharepointFolderFieldID + '.attribute .value').text()
       var list = link.split('\\')
+      list = list[list.length - 1].split('/');
       var folderName = list[list.length - 1]
       $('.controller-issues.action-show .cf_' + issueSharepointFolderFieldID + '.attribute .value').html(`<a class="external" href="${link}">${folderName}</a>`)
     }
     $('.controller-issues.action-index td.cf_' + issueSharepointFolderFieldID + '.string').each(function () {
       var link = $(this).text()
       var list = link.split('\\')
+      list = list[list.length - 1].split('/');
       var folderName = list[list.length - 1]
       $(this).html(`<a class="external" href="${link}">${folderName}</a>`)
     })
     $('.controller-my.action-page td.cf_' + issueSharepointFolderFieldID + '.string').each(function () {
       var link = $(this).text()
       var list = link.split('\\')
+      list = list[list.length - 1].split('/');
       var folderName = list[list.length - 1]
       $(this).html(`<a class="external" href="${link}">${folderName}</a>`)
     })
